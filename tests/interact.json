@@ -1,0 +1,15 @@
+{
+    "test1": {
+        "type": "string",
+        "default": "enp1s0",
+        "description": "Network card name"
+    },
+    "test2": {
+        "type": "boolean",
+        "default": false,
+        "description": "Static"
+    },
+    "test3": {
+
+    }
+}
