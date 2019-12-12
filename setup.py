@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# @Author: JanKinCai
+# @Email:
+# @Date:   2019-12-12 21:04:25
+# @Last Modified by:   JanKinCai
+# @Last Modified time: 2019-12-12 21:05:07
 import os
 
 
@@ -48,11 +53,10 @@ setup(
     ],
     zip_safe=False,
     packages=find_packages(),
-    
     install_requires=read_requirements("requirements/publish.txt"),
     entry_points={
         "console_scripts": [
-            "interact = interact.command:main",
+            "interact = interact.cli:main",
         ],
     },
     include_package_data=True,  # MANIFEST.in
@@ -69,8 +73,8 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: Implementation',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
+        # 'Programming Language :: Python :: 2',
+        # 'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
