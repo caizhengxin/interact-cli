@@ -1,15 +1,22 @@
 {
-    "test1": {
+    "project_name": {
         "type": "string",
-        "default": "enp1s0",
-        "description": "Network card name"
+        "default": "python3-demo",
+        "description": "Project name"
     },
-    "test2": {
+    "use_cython": {
         "type": "boolean",
         "default": false,
-        "description": "Static"
+        "description": "Use Cython"
     },
-    "test3": {
-
+    "code_hosting": {
+        "type": "int",
+        "default": 1,
+        "choice": [
+            "github",
+            "gitee",
+            "gitlab"
+        ],
+        "description": "Code Hosting"
     }
 }
