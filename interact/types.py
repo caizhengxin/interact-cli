@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 21:32:30
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-12 23:07:25
+# @Last Modified time: 2019-12-13 13:05:06
 """
 - string/str
 - boolean/bool
@@ -73,4 +73,7 @@ def conversion_type(types:str, value:str) -> any:
 
     func = data_type_mapping.get(types)
 
-    return func(value) if func is not None else value
+    if value is not None:
+        return func(value) if func is not None else value
+
+    return value
