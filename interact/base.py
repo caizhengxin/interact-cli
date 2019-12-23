@@ -2,11 +2,10 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-23 22:10:59
+# @Last Modified time: 2019-12-23 23:32:21
 from __future__ import print_function
 import sys
 
-from interact.error import ConfigError
 from interact.fields import (
     StringField,
     BooleanField,
@@ -14,6 +13,24 @@ from interact.fields import (
     ListField,
     ChoiceField,
 )
+
+
+class CmdInputDict(dict):
+    """
+    CmdInputDict
+    """
+
+    def __getattr__(self, name:str):
+        """
+        getattr
+        """
+
+        v = self[name]
+
+        if isinstance(v, dict):
+            return CmdInputDict(v)
+
+        return v
 
 
 class Interact(object):
@@ -52,6 +69,13 @@ class Interact(object):
 
         return self.mapping_type_items.get(name)
 
+    def do_when(self, value:str) -> any:
+        """
+        Deal with when
+        """
+
+        pass
+
     def _parser(self, iconfig) -> dict:
         """
         Parser Interact cli config.
@@ -65,8 +89,10 @@ class Interact(object):
             default = v.get("default")
             choice = v.get("choice")
             types = v.get("type")
+            when = v.get("when")
 
             fobj = self.get_mapping_type(types)(default=default, description=description, choice=choice)
+
             if not fobj.is_valid():
                 raise ValueError(f"{description}, default value error.")
 
@@ -94,12 +120,12 @@ class Interact(object):
 
         return self.cmd_input_items
 
-    def __getattr__(self, attr):
+    def __getattr__(self, name:str):
         """
         getattr
         """
 
         try:
-            return self.cmd_input_items[attr]
-        except AttributeError:
+            return getattr(CmdInputDict(self.cmd_input_items), name)
+        except KeyError:
             pass

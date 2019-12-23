@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-23 21:59:52
+# @Last Modified time: 2019-12-23 22:38:55
 import sys
 
 
@@ -300,22 +300,6 @@ class ChoiceField(BaseField):
         v = f"{self.pre_input()} {self.do_default()}{self.post_input()}: "
 
         return input(v)
-
-
-class SSSS(object):
-    """
-    Field
-    """
-
-    mapping_type_items = {
-        "string": StringField,
-        "str": StringField,
-        "boolean": BooleanField,
-        "bool": BooleanField,
-        "int": IntField,
-        "list": ListField,
-        "choice": ChoiceField,
-    }
 
 
 if __name__ == "__main__":
