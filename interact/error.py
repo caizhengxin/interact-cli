@@ -2,12 +2,12 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:57:53
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-12 21:49:57
+# @Last Modified time: 2019-12-23 20:46:16
 
 
-class InteractConfigError(Exception):
+class ConfigError(Exception):
     """
-    InteractConfigError
+    ConfigError
     """
 
     pass
