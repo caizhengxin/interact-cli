@@ -24,7 +24,7 @@ Interact cli
 .. image:: https://img.shields.io/pypi/l/interact-cli
         :target: https://github.com/caizhengxin/interact-cli/blob/master/LICENSE
 
-Interact cli.
+Interactive command line tool.
 
 * Github repo: https://github.com/caizhengxin/interact-cli
 * Documentation: https://interact-cli.readthedocs.io
@@ -33,7 +33,33 @@ Interact cli.
 Features
 --------
 
-* TODO
+* Interact input
+* Supports multiple data types
+
+Type
+----
+
+* boolean
+* string
+* int
+* list
+* choice
+
+Usage
+-----
+
+.. code:: python
+
+    from interact import loads
+
+
+    if __name__ == "__main__":
+        print(loads("interact.json"))
+
+Demo
+----
+
+* Demo_
 
 Credits
 -------
@@ -42,3 +68,4 @@ This package was created with Cookiecutter_ and the `caizhengxin/cookiecutter-pa
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`caizhengxin/cookiecutter-package`: https://github.com/caizhengxin/cookiecutter-package
+.. _Demo: ./demo
