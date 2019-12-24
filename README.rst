@@ -2,13 +2,14 @@
 Interact cli
 ============
 
-.. image:: https://img.shields.io/pypi/v/interact-cli.svg
+.. image:: https://img.shields.io/pypi/v/interact-cli.svg?branch=master&color=blue
         :target: https://pypi.python.org/pypi/interact-cli
+        :alt: PyPI
 
-.. image:: https://img.shields.io/pypi/pyversions/interact-cli.svg
+.. image:: https://img.shields.io/pypi/pyversions/interact-cli.svg?branch=master
         :target: https://pypi/python.org/pypi/interact-cli
 
-.. image:: https://img.shields.io/pypi/dm/interact-cli.svg
+.. image:: https://img.shields.io/pypi/dm/interact-cli.svg?branch=master
         :target: https://pypi/python.org/pypi/interact-cli
 
 .. image:: https://api.travis-ci.com/caizhengxin/interact-cli.svg?branch=master
@@ -18,10 +19,10 @@ Interact cli
         :target: https://interact-cli.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://img.shields.io/github/languages/code-size/caizhengxin/interact-cli
+.. image:: https://img.shields.io/github/languages/code-size/caizhengxin/interact-cli.svg?branch=master
         :target: https://github.com/caizhengxin/interact-cli
 
-.. image:: https://img.shields.io/pypi/l/interact-cli
+.. image:: https://img.shields.io/pypi/l/interact-cli.svg
         :target: https://github.com/caizhengxin/interact-cli/blob/master/LICENSE
 
 Interactive command line tool.
