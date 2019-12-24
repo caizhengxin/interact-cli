@@ -36,8 +36,8 @@ Features
 * Interact input
 * Supports multiple data types
 
-Type
-----
+Support type
+------------
 
 * boolean
 * string
@@ -45,8 +45,107 @@ Type
 * list
 * choice
 
+Installation
+------------
+
+To install interact-cli, run this command in your terminal:
+
+.. code-block:: console
+
+    $ pip3 install interact-cli
+
 Usage
 -----
+
+See interact.json_
+
+interact:
+
+.. code:: python
+
+    from interact import interact
+
+
+    if __name__ == "__main__":
+        obj = interact("interact.json")
+        print(obj)
+        print(obj.version)
+
+interacts:
+
+.. code:: python
+
+    from interact import interacts
+
+
+    config = {
+        "project_name": {
+            "type": "string",
+            "default": "interact-cli",
+            "description": "Your Project name"
+        },
+        "description": {
+            "type": "string",
+            "default": "Interactive command line tool.",
+            "description": "Project description"
+        },
+        "author": {
+            "type": "string",
+            "default": "jankincai",
+            "description": "Your name"
+        },
+        "email": {
+            "type": "string",
+            "default": "jankincai12@gmail.com",
+            "description": "Your email"
+        },
+        "version": {
+            "type": "string",
+            "default": "0.1.0",
+            "description": "Project version"
+        },
+        "use_code_hosting": {
+            "type": "boolean",
+            "default": True,
+            "description": "Use code hosting platform"
+        },
+        "code_hosting": {
+            "type": "choice",
+            "default": 1,
+            "choice": [
+                "github",
+                "gitee",
+                "gitlab"
+            ],
+            "description": "Code hosting",
+            "when": "use_code_hosting == true"
+        },
+        "code_hosting_username": {
+            "type": "string",
+            "default": "jankincai",
+            "description": "Your code hosting username",
+            "when": "use_code_hosting == true"
+        }
+    }
+
+
+    if __name__ == "__main__":
+        obj = interacts(config)
+        print(obj)
+        print(obj.version)
+
+load:
+
+.. code:: python
+
+    from interact import load
+
+
+    if __name__ == "__main__":
+        print(load("interact.json"))
+
+
+loads:
 
 .. code:: python
 
@@ -54,18 +153,20 @@ Usage
 
 
     if __name__ == "__main__":
-        print(loads("interact.json"))
+        print(loads(config))
 
 Demo
 ----
 
-* Demo_
+* demo_
 
 Credits
 -------
 
 This package was created with Cookiecutter_ and the `caizhengxin/cookiecutter-package`_ project template.
 
+
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`caizhengxin/cookiecutter-package`: https://github.com/caizhengxin/cookiecutter-package
-.. _Demo: ./demo
+.. _demo: ./demo
+.. _interact.json: ./demo/interact.sjon
