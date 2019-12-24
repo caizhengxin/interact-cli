@@ -3,7 +3,7 @@
 # @Email:
 # @Date:   2019-12-12 21:04:25
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-12 21:05:07
+# @Last Modified time: 2019-12-24 23:17:14
 import os
 
 
@@ -35,6 +35,7 @@ def read_requirements(path):
 
     return requires
 
+
 setup(
     name="interact-cli",
     version="0.1.0",
@@ -54,13 +55,7 @@ setup(
     zip_safe=False,
     packages=find_packages(),
     install_requires=read_requirements("requirements/publish.txt"),
-    entry_points={
-        "console_scripts": [
-            "interact = interact.cli:main",
-        ],
-    },
     include_package_data=True,  # MANIFEST.in
-    # scripts=["xxx.py"],
     project_urls={
         "Documentation": "https://interact-cli.readthedocs.io",
         "Source Code": "https://github.com/caizhengxin/interact-cli",
