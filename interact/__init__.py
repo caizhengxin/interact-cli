@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 22:41:53
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 22:29:33
+# @Last Modified time: 2019-12-24 23:01:41
 from __future__ import print_function
 import json
 
@@ -17,9 +17,9 @@ __version__ = "0.1.0"
 __author__ = "jankincai"
 
 
-def interact(iconfig: dict) -> Any:
+def interacts(iconfig: dict) -> Any:
     """
-    Interact
+    Interacts
 
     :param iconfig(dict): Interact cli config.
 
@@ -29,9 +29,9 @@ def interact(iconfig: dict) -> Any:
     return Interact(iconfig=iconfig)
 
 
-def interacts(file: str) -> Any:
+def interact(file: str) -> Any:
     """
-    interacts
+    interact
 
     :param file(str): xxxx.json file.
 
@@ -39,24 +39,24 @@ def interacts(file: str) -> Any:
     """
 
     with open(file) as f:
-        return interact(json.loads(f.read()))
+        return interacts(json.loads(f.read()))
 
 
-def load(iconfig: dict) -> dict:
+def loads(iconfig: dict) -> dict:
     """
-    load
+    loads
 
     :param iconfig(dict): Interact cli config.
 
     :return: dict
     """
 
-    return interact(iconfig=iconfig).get_interact_data()
+    return interacts(iconfig=iconfig).get_interact_data()
 
 
-def loads(file: str) -> dict:
+def load(file: str) -> dict:
     """
-    loads
+    load
 
     :param file(str): xxxx.json file.
 
@@ -64,4 +64,4 @@ def loads(file: str) -> dict:
     """
 
     with open(file) as f:
-        return load(json.loads(f.read()))
+        return loads(json.loads(f.read()))
