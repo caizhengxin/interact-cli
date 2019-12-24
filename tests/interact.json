@@ -7,16 +7,17 @@
     "use_cython": {
         "type": "boolean",
         "default": false,
-        "description": "Use Cython"
+        "description": "Use cython"
     },
     "code_hosting": {
-        "type": "int",
+        "type": "choice",
         "default": 1,
         "choice": [
             "github",
             "gitee",
             "gitlab"
         ],
-        "description": "Code Hosting"
+        "description": "Code hosting",
+        "when": "use_cython == true"
     }
 }
