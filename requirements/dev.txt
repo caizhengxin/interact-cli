@@ -8,5 +8,3 @@ sphinxcontrib.napoleon>=0.7
 
 pre-commit>=1.18.3
 bumpversion>=0.5.3
-
-mypy
