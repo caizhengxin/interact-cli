@@ -54,6 +54,35 @@ To install interact-cli, run this command in your terminal:
 
     $ pip3 install interact-cli
 
+or:
+
+.. code-block:: console
+
+    $ git clone https://github.com/caizhengxin/interact-cli
+    $ cd interact-cli
+    $ pip3 install -e .
+
+Demo
+----
+
+.. code-block:: console
+
+    Your Project name [interact-cli]:
+    Project description [Interactive command line tool.]:
+    Your name [jankincai]:
+    Your email [jankincai12@gmail.com]:
+    Project version [0.1.0]:
+    Use code hosting platform [n]: y
+    Select code hosting:
+      1 - github
+      2 - gitee
+      3 - gitlab
+    Choose from [1]:
+    Your code hosting username [jankincai]:
+
+
+* See demo_
+
 Usage
 -----
 
@@ -155,11 +184,6 @@ loads:
     if __name__ == "__main__":
         print(loads(config))
 
-Demo
-----
-
-* demo_
-
 Credits
 -------
 
@@ -169,4 +193,4 @@ This package was created with Cookiecutter_ and the `caizhengxin/cookiecutter-pa
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`caizhengxin/cookiecutter-package`: https://github.com/caizhengxin/cookiecutter-package
 .. _demo: ./demo
-.. _interact.json: ./demo/interact.sjon
+.. _interact.json: ./demo/interact.json
