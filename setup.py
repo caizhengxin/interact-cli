@@ -3,7 +3,7 @@
 # @Email:
 # @Date:   2019-12-12 21:04:25
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 23:17:14
+# @Last Modified time: 2019-12-25 00:41:26
 import os
 
 
@@ -14,11 +14,13 @@ with open('README.rst') as f:
     long_description = f.read()
 
 
-def read_requirements(path):
+def read_requirements(path: str) -> list:
     """
-    递归读取requirements
+    read requirements/
 
-    :param path: path
+    :param path(str): path
+
+    :return: list
     """
 
     requires = []
