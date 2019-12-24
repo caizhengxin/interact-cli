@@ -2,9 +2,10 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 22:24:19
+# @Last Modified time: 2019-12-24 22:40:25
 from __future__ import print_function
 import sys
+import json
 import traceback
 
 from typing import (
@@ -128,3 +129,17 @@ class Interact(object):
             return getattr(CmdInputDict(self.cmd_input_items), name)
         except KeyError:
             pass
+
+    def __repr__(self) -> str:
+        """
+        repr
+        """
+
+        return json.dumps(self.cmd_input_items, indent=4)
+
+    def __str__(self) -> str:
+        """
+        str
+        """
+
+        return self.__repr__()
