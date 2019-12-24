@@ -2,8 +2,8 @@
 # @Author: JanKinCai
 # @Date:   2019-12-24 21:12:56
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 22:16:58
-from interact import load
+# @Last Modified time: 2019-12-24 23:06:45
+from interact import loads
 
 
 config = {
@@ -57,7 +57,5 @@ config = {
 }
 
 
-
-
 if __name__ == "__main__":
-    print(load(config))
+    print(loads(config))
