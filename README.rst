@@ -58,7 +58,7 @@ or:
 
 .. code-block:: console
 
-    $ git clone https://github.com/caizhengxin/interact-cli
+    $ git clone https://github.com/caizhengxin/interact-cli.git
     $ cd interact-cli
     $ pip3 install -e .
 
