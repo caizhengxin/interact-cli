@@ -2,8 +2,12 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-23 22:38:55
-import sys
+# @Last Modified time: 2019-12-24 21:05:24
+# import sys
+
+from typing import (
+    Any, Optional, List, Union
+)
 
 
 class BaseField(object):
@@ -15,10 +19,9 @@ class BaseField(object):
     """
 
     message = "Invalided `{value}`"
-    valid_type = None
+    valid_type: Any = None
 
-
-    def __init__(self, default:any=None, description:str="", *args, **kwargs):
+    def __init__(self, default: Any=None, description: str="", *args, **kwargs):
         """
         init
         """
@@ -50,7 +53,7 @@ class BaseField(object):
 
         print(f"Error: {self.message.format(**kwargs)}")
 
-    def to_default(self, v:any) -> any:
+    def to_default(self, v: Any) -> Any:
         """
         To default
 
@@ -73,7 +76,7 @@ class BaseField(object):
 
         return f"[{self.to_default(default)}]" if default is not None else ""
 
-    def do(self) -> any:
+    def do(self) -> Any:
         """
         Deal with
 
@@ -94,7 +97,7 @@ class BaseField(object):
 
         return self.do()
 
-    def to_value(self, v:str) -> any:
+    def to_value(self, v: Any) -> Any:
         """
         To value
 
@@ -143,29 +146,31 @@ class BooleanField(BaseField):
     mapping_boolean_true = [
         "y", "Y",
         "t", "T",
-        "True",
+        "true", "True",
+        True,
     ]
 
     mapping_boolean_false = [
         "n", "N",
         "f", "F",
-        "False"
+        "false", "False",
+        False,
     ]
 
     valid_type = bool
 
-    def to_default(self, v:any) -> any:
+    def to_default(self, v: bool) -> Any:
         """
         To default
 
-        :param v(any): default
+        :param v(bool): Default to input string
 
         :return: any
         """
 
         return "y" if v else "n"
 
-    def to_value(self, v:str) -> bool:
+    def to_value(self, v: str) -> bool:
         """
         To value
 
@@ -190,7 +195,7 @@ class StringField(BaseField):
 
     valid_type = str
 
-    def to_value(self, v:str) -> str:
+    def to_value(self, v: str) -> str:
         """
         To value
 
@@ -209,7 +214,7 @@ class IntField(BaseField):
 
     valid_type = int
 
-    def to_value(self, v:str) -> int:
+    def to_value(self, v: str) -> int:
         """
         To value
 
@@ -228,7 +233,7 @@ class ListField(BaseField):
 
     valid_type = list
 
-    def to_value(self, v:any) -> list:
+    def to_value(self, v: Any) -> list:
         """
         To value
 
@@ -254,7 +259,7 @@ class ChoiceField(BaseField):
 
     valid_type = int
 
-    def __init__(self, choice:list=[], default:any=None, description:str="", *args, **kwargs):
+    def __init__(self, choice: list=[], default: Any=None, description: str="", *args, **kwargs):
         """
         init
         """
@@ -262,7 +267,7 @@ class ChoiceField(BaseField):
         self.choice = choice
         super(ChoiceField, self).__init__(default=default or 1, description=description, *args, **kwargs)
 
-    def to_value(self, v:any) -> any:
+    def to_value(self, v: Any) -> Any:
         """
         To value
 
@@ -300,13 +305,3 @@ class ChoiceField(BaseField):
         v = f"{self.pre_input()} {self.do_default()}{self.post_input()}: "
 
         return input(v)
-
-
-if __name__ == "__main__":
-    print(IntField(1, "cx").do())
-    print(IntField(description="cx").do())
-    print(ChoiceField(["A", "B"], description="DS").do())
-    print(ListField(default=["192.168.166.120/24", "192.168.166.120/24"], description="IPv4").do())
-    obj = BooleanField(True, description="u_cython")
-    print(obj.is_valid())
-    print(obj.do())

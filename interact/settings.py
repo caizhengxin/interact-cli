@@ -1,42 +1,9 @@
+# -*- coding: utf-8 -*-
+# @Author: JanKinCai
+# @Date:   2019-12-24 21:16:57
+# @Last Modified by:   JanKinCai
+# @Last Modified time: 2019-12-24 21:16:58
 import os
 
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-
-
-# Set Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(process)d %(thread)d %(message)s'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'formatter': 'verbose',
-            'filename': 'error.log',
-            'mode': 'a',
-            'maxBytes': 10 * 1024 * 1024,
-            'backupCount': 5,
-        },
-        'control': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        }
-    },
-    'loggers': {
-        'interact': {
-            'handlers': ['file', 'control'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
