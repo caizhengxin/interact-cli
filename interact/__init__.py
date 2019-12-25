@@ -13,7 +13,7 @@ from typing import (
 from interact.base import Interact
 
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "jankincai"
 
 

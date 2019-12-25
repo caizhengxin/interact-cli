@@ -40,7 +40,7 @@ def read_requirements(path: str) -> list:
 
 setup(
     name="interact-cli",
-    version="0.1.0",
+    version="0.2.0",
     author="jankincai",
     author_email="jankincai12@gmail.com",
     maintainer="jankincai",
