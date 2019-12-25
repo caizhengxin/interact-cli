@@ -1,7 +1,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 21:10:00
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-12 21:10:00
+# @Last Modified time: 2019-12-25 17:58:23
 language: python
 
 dist: bionic
@@ -10,7 +10,6 @@ sudo: required
 python:
   - 3.7
   - 3.6
-  - 3.5
 
 install:
   - pip install -U tox-travis
