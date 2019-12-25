@@ -3,7 +3,7 @@
 # @Email:
 # @Date:   2019-12-12 21:04:25
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-25 00:41:26
+# @Last Modified time: 2019-12-25 21:44:23
 import os
 
 
@@ -48,11 +48,12 @@ setup(
     url="https://github.com/caizhengxin/interact-cli",
     download_url="https://github.com/caizhengxin/interact-cli.git",
     license="BSD",
-    description="Interact cli.",
+    description="Interactive command line tool.",
     long_description=long_description,
     keywords=[
         "interact-cli",
         "interact",
+        "cli",
     ],
     zip_safe=False,
     packages=find_packages(),
@@ -70,12 +71,9 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: Implementation',
-        # 'Programming Language :: Python :: 2',
-        # 'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries'
     ],
 )
