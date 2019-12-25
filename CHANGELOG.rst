@@ -8,14 +8,14 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+
+0.2.0_ - 2019-12-25
+-------------------
 Added
 *****
 
 * Add CHANGELOG.rst_
 * Add interact input float type
-
-Changed
-*******
 
 0.1.0_ - 2019-12-24
 -------------------
@@ -24,7 +24,8 @@ Added
 
 * Initialize the project
 
-.. _Unreleased: https://github.com/caizhengxin/interact-cli/compare/v0.1.0...HEAD
+.. _Unreleased: https://github.com/caizhengxin/interact-cli/compare/v0.2.0...HEAD
+.. _0.2.0: https://github.com/caizhengxin/interact-cli/compare/v0.1.0...0.2.0
 .. _0.1.0: https://github.com/caizhengxin/interac-cli/releases/tag/v0.1.0
 
 .. _`Keep a Changelog`: http://keepachangelog.com/
