@@ -24,8 +24,8 @@ Added
 
 * Initialize the project
 
-.. _Unreleased: https://github.com/caizhengxin/vscodefileheader/compare/v0.1.0...HEAD
-.. _0.1.0: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.1.0
+.. _Unreleased: https://github.com/caizhengxin/interact-cli/compare/v0.1.0...HEAD
+.. _0.1.0: https://github.com/caizhengxin/interac-cli/releases/tag/v0.1.0
 
 .. _`Keep a Changelog`: http://keepachangelog.com/
 .. _CHANGELOG.rst: ./CHANGELOG.rst
