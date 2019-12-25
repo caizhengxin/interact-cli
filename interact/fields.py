@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 21:05:24
+# @Last Modified time: 2019-12-25 16:54:58
 # import sys
 
 from typing import (
@@ -224,6 +224,25 @@ class IntField(BaseField):
         """
 
         return int(v)
+
+
+class FloatField(BaseField):
+    """
+    FloatField
+    """
+
+    valid_type = float
+
+    def to_value(self, v: str) -> float:
+        """
+        To value
+
+        :param v(str): cmd data
+
+        :return: float
+        """
+
+        return float(v)
 
 
 class ListField(BaseField):

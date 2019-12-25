@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 22:40:25
+# @Last Modified time: 2019-12-25 16:59:04
 from __future__ import print_function
 import sys
 import json
@@ -20,6 +20,7 @@ from interact.fields import (
     IntField,
     ListField,
     ChoiceField,
+    FloatField,
 )
 
 
@@ -38,6 +39,7 @@ class Interact(object):
         "int": IntField,
         "list": ListField,
         "choice": ChoiceField,
+        "float": FloatField,
     }
 
     def __init__(self, iconfig: dict, *args, **kwargs):

@@ -7,10 +7,10 @@ Interact cli
         :alt: PyPI
 
 .. image:: https://img.shields.io/pypi/pyversions/interact-cli.svg?branch=master
-        :target: https://pypi/python.org/pypi/interact-cli
+        :target: https://pypi.python.org/pypi/interact-cli
 
 .. image:: https://img.shields.io/pypi/dm/interact-cli.svg?branch=master
-        :target: https://pypi/python.org/pypi/interact-cli
+        :target: https://pypi.python.org/pypi/interact-cli
 
 .. image:: https://api.travis-ci.com/caizhengxin/interact-cli.svg?branch=master
         :target: https://travis-ci.org/caizhengxin/interact-cli/?branch=master
@@ -36,6 +36,7 @@ Features
 
 * Interact input
 * Supports multiple data types
+* Support input check
 
 Support type
 ------------
@@ -43,6 +44,7 @@ Support type
 * boolean
 * string
 * int
+* float
 * list
 * choice
 
