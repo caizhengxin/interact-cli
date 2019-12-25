@@ -6,13 +6,13 @@ Interact cli
         :target: https://pypi.python.org/pypi/interact-cli
         :alt: PyPI
 
-.. image:: https://img.shields.io/pypi/pyversions/interact-cli.svg?branch=master
+.. image:: https://img.shields.io/pypi/pyversions/interact-cli.svg?branch=master&color=blue
         :target: https://pypi.python.org/pypi/interact-cli
 
-.. image:: https://img.shields.io/pypi/dm/interact-cli.svg?branch=master
+.. image:: https://img.shields.io/pypi/dm/interact-cli.svg?branch=master&color=blue
         :target: https://pypi.python.org/pypi/interact-cli
 
-.. image:: https://api.travis-ci.com/caizhengxin/interact-cli.svg?branch=master
+.. image:: https://api.travis-ci.com/caizhengxin/interact-cli.svg?branch=master&color=blue
         :target: https://travis-ci.org/caizhengxin/interact-cli/?branch=master
 
 .. image:: https://readthedocs.org/projects/interact-cli/badge/?version=latest
