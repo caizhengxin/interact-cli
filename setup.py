@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: JanKinCai
-# @Email:
 # @Date:   2019-12-12 21:04:25
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-25 21:44:23
+# @Last Modified time: 2019-12-26 11:57:41
 import os
 
 
@@ -66,14 +65,15 @@ setup(
     platforms="any",
     classifiers=[
         'Development Status :: 4 - Beta',
+        "Environment :: Console",
         'Operating System :: OS Independent',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Topic :: Software Development :: Libraries'
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )
