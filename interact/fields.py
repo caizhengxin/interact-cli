@@ -2,9 +2,9 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-25 16:54:58
+# @Last Modified time: 2019-12-26 23:20:39
 # import sys
-
+import re
 from typing import (
     Any, Optional, List, Union
 )
@@ -14,25 +14,26 @@ class BaseField(object):
     """
     BaseField
 
-    :param default(any): input default, default ``None``
-    :param description(str): prefix description, default ``""``
+    :param default(any): Input default, default ``None``
+    :param description(str): Prefix description, default ``""``
+    :param regex(str): Verification input data rule, default ``""``
     """
 
     message = "Invalided `{value}`"
     valid_type: Any = None
 
-    def __init__(self, default: Any=None, description: str="", *args, **kwargs):
+    def __init__(self, default: Any = None, description: str = "", regex: str = "", *args, **kwargs):
         """
         init
         """
 
         self.default = default
         self.descripiton = description
-        self.is_valid()
+        self.regex = re.compile(regex) if regex else regex
 
-    def is_valid(self) -> bool:
+    def is_default_valid(self) -> bool:
         """
-        Valid default
+        Verification default is valid.
 
         :return: bool
         """
@@ -42,7 +43,24 @@ class BaseField(object):
         if not isinstance(self.default, self.valid_type):
             return False
 
+        if not self.is_valid(self.default):
+            return False
+
         return True
+
+    def is_valid(self, iv: str) -> bool:
+        """
+        Verification input value is valid.
+
+        :param iv(str): Input value.
+
+        :return: bool
+        """
+
+        if not self.regex or self.regex.match(iv) is not None:
+            return True
+
+        return False
 
     def print_message(self, **kwargs) -> None:
         """
@@ -90,9 +108,13 @@ class BaseField(object):
             return v
 
         try:
-            return self.to_value(v)
-        except Exception as e:
-            # print("[+]:", e)
+            v = self.to_value(v)
+
+            if not self.is_valid(v):
+                raise ValueError()
+
+            return v
+        except Exception:
             self.print_message(value=v)
 
         return self.do()

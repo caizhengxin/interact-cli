@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-25 16:59:04
+# @Last Modified time: 2019-12-26 18:03:11
 from __future__ import print_function
 import sys
 import json
@@ -40,6 +40,7 @@ class Interact(object):
         "list": ListField,
         "choice": ChoiceField,
         "float": FloatField,
+        "double": FloatField,
     }
 
     def __init__(self, iconfig: dict, *args, **kwargs):
@@ -82,6 +83,7 @@ class Interact(object):
             choice = v.get("choice")
             types = v.get("type")
             whenstr = v.get("when")
+            regex = v.get("regex")
 
             func: Any = self.get_mapping_type(types)
 
@@ -92,9 +94,9 @@ class Interact(object):
                 items[k] = None
                 continue
 
-            fobj = func(default=default, description=description, choice=choice)
+            fobj = func(default=default, description=description, choice=choice, regex=regex)
 
-            if not fobj.is_valid():
+            if not fobj.is_default_valid():
                 raise ValueError(f"{description}, default value error.")
 
             items[k] = fobj.do()
