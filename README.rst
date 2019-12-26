@@ -37,6 +37,7 @@ Features
 * Interact input
 * Supports multiple data types
 * Support input check
+* Support regex, see network.json_
 
 Support type
 ------------
@@ -197,3 +198,4 @@ This package was created with Cookiecutter_ and the `caizhengxin/cookiecutter-pa
 .. _`caizhengxin/cookiecutter-package`: https://github.com/caizhengxin/cookiecutter-package
 .. _demo: ./demo
 .. _interact.json: ./demo/interact.json
+.. _network.json: ./demo/network.json
