@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-24 20:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 23:09:42
+# @Last Modified time: 2019-12-27 23:52:02
 from interact.fields import (
     IntField,
     ChoiceField,
@@ -122,6 +122,22 @@ def test_strfield_regex_min_max():
     """
 
     assert StringField("13", regex=r"^\d{2}$", min_length=1, max_length=4).is_default_valid() is True
+
+
+def test_listfield():
+    """
+    ListField
+    """
+
+    assert ListField(["192.168.1.1"]).is_default_valid() is True
+
+
+def test_listfield_min():
+    """
+    ListField
+    """
+
+    assert ListField(["192.168.1.1"], min_length=30).is_default_valid() is False
 
 
 if __name__ == "__main__":
