@@ -66,11 +66,6 @@ or:
     $ cd interact-cli
     $ pip3 install -e .
 
-Demo
-----
-
-* See demo_
-
 Usage
 -----
 
@@ -100,11 +95,89 @@ string:
         Error: Invalided `sssssssssssss`
         Your name [jankinca]: jankincai
         """
+
         print(interacts(config).name)
 
 regex:
 
-.. include:: ./demo/interact_regex.py
+.. code:: python
+
+    from interact import interacts
+
+
+    config = {
+        "ipv4": {
+            "type": "string",
+            "regex": r"^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$",
+            "default": "192.168.166.12",
+            "description": "IPv4 address"
+        }
+    }
+
+
+    if __name__ == "__main__":
+        """
+        IPv4 address [192.168.166.12]: 22
+        Error: Invalided `22`
+        IPv4 address [192.168.166.12]: 192.168.166.2
+        """
+
+        print(interacts(config).ipv4)
+
+when:
+
+.. code:: python
+
+    from interact import interacts
+
+
+    config = {
+        "use_code_hosting": {
+            "type": "boolean",
+            "default": True,
+            "description": "Use code hosting platform"
+        },
+        "code_hosting": {
+            "type": "choice",
+            "default": 1,
+            "choice": [
+                "github",
+                "gitee",
+                "gitlab"
+            ],
+            "description": "Code hosting",
+            "when": "use_code_hosting == true"
+        },
+        "code_hosting_username": {
+            "type": "string",
+            "default": "jankincai",
+            "description": "Your code hosting username",
+            "when": "use_code_hosting == true"
+        }
+    }
+
+
+    if __name__ == "__main__":
+        """
+        Use code hosting platform [y]: y
+        Select code hosting:
+        1 - github
+        2 - gitee
+        3 - gitlab
+        Choose from [1]:
+        Your code hosting username [jankincai]: jankincai
+
+        {'use_code_hosting': True, 'code_hosting': 'github', 'code_hosting_username': 'jankincai'}
+        """
+
+        """
+        Use code hosting platform [y]: n
+        {'use_code_hosting': False, 'code_hosting': None, 'code_hosting_username': None}
+        """
+
+        print(interacts(config).get_interact_data())
+
+See demo_
 
 Credits
 -------
