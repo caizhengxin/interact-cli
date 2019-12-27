@@ -2,10 +2,11 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 22:41:53
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 21:33:27
+# @Last Modified time: 2019-12-27 22:03:13
 from __future__ import print_function
 import sys
 import json
+# import traceback
 
 from typing import (
     Any
@@ -30,6 +31,7 @@ def interacts(iconfig: dict) -> Any:
     try:
         return Interact(iconfig=iconfig)
     except Exception as e:
+        # traceback.print_exc()
         print(f"[-]:", e)
 
     sys.exit(1)

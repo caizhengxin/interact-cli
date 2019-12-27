@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-26 23:20:39
+# @Last Modified time: 2019-12-27 23:04:28
 # import sys
 import re
 from typing import (
@@ -16,20 +16,18 @@ class BaseField(object):
 
     :param default(any): Input default, default ``None``
     :param description(str): Prefix description, default ``""``
-    :param regex(str): Verification input data rule, default ``""``
     """
 
     message = "Invalided `{value}`"
     valid_type: Any = None
 
-    def __init__(self, default: Any = None, description: str = "", regex: str = "", *args, **kwargs):
+    def __init__(self, default: Any = None, description: str = "", *args, **kwargs):
         """
         init
         """
 
         self.default = default
         self.descripiton = description
-        self.regex = re.compile(regex) if regex else regex
 
     def is_default_valid(self) -> bool:
         """
@@ -57,10 +55,7 @@ class BaseField(object):
         :return: bool
         """
 
-        if not self.regex or self.regex.match(iv) is not None:
-            return True
-
-        return False
+        return True
 
     def print_message(self, **kwargs) -> None:
         """
@@ -217,6 +212,34 @@ class StringField(BaseField):
 
     valid_type = str
 
+    def __init__(self, default: Any = None, description: str = "", min_length: int = None,
+                 max_length: int = None, regex: str = "", *args, **kwargs):
+        """
+        init
+        """
+
+        self.regex = re.compile(regex) if regex else regex
+        self.min_length = min_length
+        self.max_length = max_length
+        super().__init__(default=default, description=description, *args, **kwargs)
+
+
+    def is_valid(self, iv: str) -> bool:
+        """
+        Verification input value is valid.
+
+        :param iv(str): Input value.
+
+        :return: bool
+        """
+
+        if (self.max_length is None or len(iv) < self.max_length) \
+           and (self.min_length is None or len(iv) >= self.min_length) \
+           and (not self.regex or self.regex.match(iv) is not None):
+            return True
+
+        return False
+
     def to_value(self, v: str) -> str:
         """
         To value
@@ -236,6 +259,47 @@ class IntField(BaseField):
 
     valid_type = int
 
+    def __init__(self, default: Any = None, description: str = "",
+                 max_value: int = None, min_value: int = None, *args, **kwargs):
+        """
+        init
+        """
+
+        super().__init__(default=default, description=description, *args, **kwargs)
+        self.max_value = max_value
+        self.min_value = min_value
+
+    def is_valid(self, iv: str) -> bool:
+        """
+        Verification input value is valid.
+
+        :param iv(str): Input value.
+
+        :return: bool
+        """
+
+        if (self.max_value is None or iv < self.max_value) and (self.min_value is None or iv >= self.min_value):
+            return True
+
+        return False
+
+    def print_message(self, **kwargs) -> None:
+        """
+        print message
+
+        :return: None
+        """
+
+        msg = f"Error: {self.message.format(**kwargs)}"
+
+        if self.max_value is not None:
+            msg += f", max_value={self.max_value}"
+
+        if self.min_value is not None:
+            msg += f", min_value={self.min_value}"
+
+        print(msg)
+
     def to_value(self, v: str) -> int:
         """
         To value
@@ -248,7 +312,7 @@ class IntField(BaseField):
         return int(v)
 
 
-class FloatField(BaseField):
+class FloatField(IntField):
     """
     FloatField
     """
@@ -300,7 +364,7 @@ class ChoiceField(BaseField):
 
     valid_type = int
 
-    def __init__(self, choice: list=[], default: Any=None, description: str="", *args, **kwargs):
+    def __init__(self, choice: list = [], default: Any = None, description: str = "", *args, **kwargs):
         """
         init
         """
