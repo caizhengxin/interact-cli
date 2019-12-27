@@ -8,6 +8,8 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+
+0.3.0 - 2019-12-28
 Added
 *****
 
@@ -35,7 +37,8 @@ Added
 
 * Initialize the project
 
-.. _Unreleased: https://github.com/caizhengxin/interact-cli/compare/v0.2.0...HEAD
+.. _Unreleased: https://github.com/caizhengxin/interact-cli/compare/v0.3.0...HEAD
+.. _0.3.0: https://github.com/caizhengxin/interact-cli/compare/v0.2.0...0.3.0
 .. _0.2.0: https://github.com/caizhengxin/interact-cli/compare/v0.1.0...0.2.0
 .. _0.1.0: https://github.com/caizhengxin/interac-cli/releases/tag/v0.1.0
 
