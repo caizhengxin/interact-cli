@@ -69,22 +69,6 @@ or:
 Demo
 ----
 
-.. code-block:: console
-
-    Your Project name [interact-cli]:
-    Project description [Interactive command line tool.]:
-    Your name [jankincai]:
-    Your email [jankincai12@gmail.com]:
-    Project version [0.1.0]:
-    Use code hosting platform [n]: y
-    Select code hosting:
-      1 - github
-      2 - gitee
-      3 - gitlab
-    Choose from [1]:
-    Your code hosting username [jankincai]:
-
-
 * See demo_
 
 Usage
@@ -92,19 +76,7 @@ Usage
 
 See interact.json_
 
-interact:
-
-.. code:: python
-
-    from interact import interact
-
-
-    if __name__ == "__main__":
-        obj = interact("interact.json")
-        print(obj)
-        print(obj.version)
-
-interacts:
+string:
 
 .. code:: python
 
@@ -112,81 +84,27 @@ interacts:
 
 
     config = {
-        "project_name": {
+        "name": {
             "type": "string",
-            "default": "interact-cli",
-            "description": "Your Project name"
-        },
-        "description": {
-            "type": "string",
-            "default": "Interactive command line tool.",
-            "description": "Project description"
-        },
-        "author": {
-            "type": "string",
-            "default": "jankincai",
+            "default": "jankinca",
+            "max_length": 10,
+            "min_length": 1,
             "description": "Your name"
-        },
-        "email": {
-            "type": "string",
-            "default": "jankincai12@gmail.com",
-            "description": "Your email"
-        },
-        "version": {
-            "type": "string",
-            "default": "0.1.0",
-            "description": "Project version"
-        },
-        "use_code_hosting": {
-            "type": "boolean",
-            "default": True,
-            "description": "Use code hosting platform"
-        },
-        "code_hosting": {
-            "type": "choice",
-            "default": 1,
-            "choice": [
-                "github",
-                "gitee",
-                "gitlab"
-            ],
-            "description": "Code hosting",
-            "when": "use_code_hosting == true"
-        },
-        "code_hosting_username": {
-            "type": "string",
-            "default": "jankincai",
-            "description": "Your code hosting username",
-            "when": "use_code_hosting == true"
         }
     }
 
 
     if __name__ == "__main__":
-        obj = interacts(config)
-        print(obj)
-        print(obj.version)
+        """
+        Your name [jankinca]: sssssssssssss
+        Error: Invalided `sssssssssssss`
+        Your name [jankinca]: jankincai
+        """
+        print(interacts(config).name)
 
-load:
+regex:
 
-.. code:: python
-
-    from interact import load
-
-
-    if __name__ == "__main__":
-        print(load("interact.json"))
-
-
-loads:
-
-.. code:: python
-
-    from interact import loads
-
-
-    if __name__ == "__main__":
-        print(loads(config))
+.. include:: ./demo/interact_regex.py
 
 Credits
 -------
