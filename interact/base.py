@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-26 18:03:11
+# @Last Modified time: 2019-12-27 21:29:18
 from __future__ import print_function
 import sys
 import json
@@ -12,6 +12,7 @@ from typing import (
     Callable, Optional, Any, Dict
 )
 
+from interact.error import ConfigError
 from interact.utils import CmdInputDict
 from interact.when import when
 from interact.fields import (
@@ -26,7 +27,7 @@ from interact.fields import (
 
 class Interact(object):
     """
-    Interact
+    Interactive command line
 
     :param iconfig(dict): Interact cli config.
     """
@@ -62,12 +63,24 @@ class Interact(object):
 
         return self.mapping_type_items.get(name)
 
-    def do_when(self, value: str) -> Any:
+    def is_iconfig_valid(self) -> None:
         """
-        Deal with when
+        Check iconfig
         """
 
-        pass
+        for k, v in self.iconfig.items():
+            if not isinstance(v, dict):
+                raise ConfigError(f"{k}: value must be dict type.")
+
+            types = v.get("type")
+
+            if types is None or types not in self.mapping_type_items.keys():
+                raise ConfigError(f"{k}: type is not supported.")
+
+            fobj = self.get_mapping_type(types)(**v)
+
+            if not fobj.is_default_valid():
+                raise ConfigError(f"{k}: default value error.")
 
     def _parser(self, iconfig) -> dict:
         """
@@ -78,28 +91,18 @@ class Interact(object):
 
         for k, v in iconfig.items():
 
-            description = v.get("description") or k
-            default = v.get("default")
-            choice = v.get("choice")
-            types = v.get("type")
+            description = v.get("description")
+
+            if not description:
+                v["description"] = k
+
             whenstr = v.get("when")
-            regex = v.get("regex")
-
-            func: Any = self.get_mapping_type(types)
-
-            if func is None:
-                raise ValueError("Not support type.")
 
             if whenstr is not None and not when(whenstr, items):
                 items[k] = None
                 continue
 
-            fobj = func(default=default, description=description, choice=choice, regex=regex)
-
-            if not fobj.is_default_valid():
-                raise ValueError(f"{description}, default value error.")
-
-            items[k] = fobj.do()
+            items[k] = self.get_mapping_type(v["type"])(**v).do()
 
         return items
 
@@ -110,12 +113,8 @@ class Interact(object):
         :return: dict
         """
 
-        try:
-            return self._parser(self.iconfig)
-        except Exception as e:
-            print("[-]:", e)
-            traceback.print_exc()
-            sys.exit(1)
+        self.is_iconfig_valid()
+        return self._parser(self.iconfig)
 
     def get_interact_data(self) -> dict:
         """

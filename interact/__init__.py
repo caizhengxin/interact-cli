@@ -2,8 +2,9 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 22:41:53
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 23:01:41
+# @Last Modified time: 2019-12-27 21:33:27
 from __future__ import print_function
+import sys
 import json
 
 from typing import (
@@ -26,7 +27,12 @@ def interacts(iconfig: dict) -> Any:
     :return: any
     """
 
-    return Interact(iconfig=iconfig)
+    try:
+        return Interact(iconfig=iconfig)
+    except Exception as e:
+        print(f"[-]:", e)
+
+    sys.exit(1)
 
 
 def interact(file: str) -> Any:
