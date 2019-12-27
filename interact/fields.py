@@ -2,11 +2,11 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 23:04:28
+# @Last Modified time: 2019-12-27 23:48:03
 # import sys
 import re
 from typing import (
-    Any, Optional, List, Union
+    Any,
 )
 
 
@@ -331,12 +331,27 @@ class FloatField(IntField):
         return float(v)
 
 
-class ListField(BaseField):
+class ListField(StringField):
     """
     ListField
     """
 
     valid_type = list
+
+    def is_valid(self, iv: list) -> bool:
+        """
+        Verification input value is valid.
+
+        :param iv(list): Input value.
+
+        :return: bool
+        """
+
+        for v in iv:
+            if super().is_valid(v) is False:
+                return False
+
+        return True
 
     def to_value(self, v: Any) -> list:
         """
