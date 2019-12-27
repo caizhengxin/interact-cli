@@ -8,6 +8,16 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+Added
+*****
+
+* ``IntField`` support ``max_value``, ``min_value``
+* ``StringField` support ``max_length``, ``min_length``, ``regex``
+
+Changed
+*******
+
+* first check configuration file formatd
 
 0.2.0_ - 2019-12-25
 -------------------
