@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 23:48:03
+# @Last Modified time: 2019-12-28 00:32:41
 # import sys
 import re
 from typing import (
@@ -21,12 +21,13 @@ class BaseField(object):
     message = "Invalided `{value}`"
     valid_type: Any = None
 
-    def __init__(self, default: Any = None, description: str = "", *args, **kwargs):
+    def __init__(self, default: Any = None, description: str = "", prefix=">", *args, **kwargs):
         """
         init
         """
 
         self.default = default
+        self.prefix = prefix
         self.descripiton = description
 
     def is_default_valid(self) -> bool:
@@ -151,6 +152,7 @@ class BaseField(object):
         """
 
         v = f"{self.pre_input()}{self.descripiton} {self.do_default()}{self.post_input()}: "
+        v = f"{self.prefix} {v}" if self.prefix else v
 
         return input(v)
 
@@ -410,7 +412,10 @@ class ChoiceField(BaseField):
         ]
 
         choice_list = [f"  {i} - {chi}" for i, chi in enumerate(self.choice, 1)]
-        choice_list.append(f"Choose from")
+
+        prefix = "Choose from"
+        prefix = f"{self.prefix} {prefix}" if self.prefix else prefix
+        choice_list.append(prefix)
         input_list.extend(choice_list)
 
         return "\n".join(input_list)
@@ -423,5 +428,6 @@ class ChoiceField(BaseField):
         """
 
         v = f"{self.pre_input()} {self.do_default()}{self.post_input()}: "
+        v = f"{self.prefix} {v}" if self.prefix else v
 
         return input(v)

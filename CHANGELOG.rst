@@ -13,6 +13,7 @@ Added
 
 * ``IntField`` support ``max_value``, ``min_value``
 * ``StringField` support ``max_length``, ``min_length``, ``regex``
+* Add output prefix ``>``.
 
 Changed
 *******

@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 22:06:37
+# @Last Modified time: 2019-12-28 00:26:54
 from __future__ import print_function
 import sys
 import json
@@ -44,12 +44,13 @@ class Interact(object):
         "double": FloatField,
     }
 
-    def __init__(self, iconfig: dict, *args, **kwargs):
+    def __init__(self, iconfig: dict, prefix=">", *args, **kwargs):
         """
         init
         """
 
         self.iconfig = iconfig
+        self.prefix = prefix
         self.cmd_input_items = self.parser()
 
     def get_mapping_type(self, name: str) -> Optional[Callable[[Any, str, Optional[list]], Any]]:
@@ -91,10 +92,7 @@ class Interact(object):
 
         for k, v in iconfig.items():
 
-            description = v.get("description")
-
-            if not description:
-                v["description"] = k
+            v["description"] = v.get("description") or k
 
             whenstr = v.get("when")
 
@@ -102,7 +100,7 @@ class Interact(object):
                 items[k] = None
                 continue
 
-            items[k] = self.get_mapping_type(v["type"])(**v).do()
+            items[k] = self.get_mapping_type(v["type"])(prefix=self.prefix, **v).do()
 
         return items
 
