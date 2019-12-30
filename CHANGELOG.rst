@@ -8,8 +8,19 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+Added
+*****
+
+* Add custom type.
+* Add ``mac``, ``ipv4``, ``cidr``, ``hex`` type.
+
+Fixed
+*****
+
+* Default value does not exist error.
 
 0.3.0 - 2019-12-28
+------------------
 Added
 *****
 
