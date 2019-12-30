@@ -8,6 +8,9 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+
+0.4.0 - 2019-12-30
+------------------
 Added
 *****
 
