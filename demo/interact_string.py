@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-27 23:56:55
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-28 00:17:51
+# @Last Modified time: 2019-12-30 16:00:25
 from interact import interacts
 
 
@@ -13,7 +13,12 @@ config = {
         "max_length": 10,
         "min_length": 1,
         "description": "Your name"
-    }
+    },
+    "hex": {
+        "type": "hex",
+        # "default": "00",
+        "description": "Buf"
+    },
 }
 
 
