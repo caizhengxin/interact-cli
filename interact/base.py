@@ -2,11 +2,11 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-28 00:26:54
+# @Last Modified time: 2019-12-30 16:13:27
 from __future__ import print_function
-import sys
+# import sys
 import json
-import traceback
+# import traceback
 
 from typing import (
     Callable, Optional, Any, Dict
@@ -22,6 +22,10 @@ from interact.fields import (
     ListField,
     ChoiceField,
     FloatField,
+    MACField,
+    IPv4Field,
+    HexField,
+    CIDRField,
 )
 
 
@@ -42,6 +46,10 @@ class Interact(object):
         "choice": ChoiceField,
         "float": FloatField,
         "double": FloatField,
+        "mac": MACField,
+        "ipv4": IPv4Field,
+        "cidr": CIDRField,
+        "hex": HexField,
     }
 
     def __init__(self, iconfig: dict, prefix=">", *args, **kwargs):
@@ -62,7 +70,7 @@ class Interact(object):
         :return: callable
         """
 
-        return self.mapping_type_items.get(name)
+        return self.mapping_type_items.get(name) or self.mapping_type_items.get(name.lower())
 
     def is_iconfig_valid(self) -> None:
         """
@@ -120,6 +128,18 @@ class Interact(object):
         """
 
         return self.cmd_input_items
+
+    def register(self, name: str, field: object) -> None:
+        """
+        Registered custom field.
+
+        :param name(str): Type name.
+        :param field(object): Field object.
+
+        :return: None
+        """
+
+        self.mapping_type_items[name] = field
 
     def __getattr__(self, name: str) -> Any:
         """

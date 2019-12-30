@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-28 00:32:41
+# @Last Modified time: 2019-12-30 16:12:52
 # import sys
 import re
 from typing import (
@@ -38,6 +38,9 @@ class BaseField(object):
         """
 
         assert self.valid_type is not None, "valid_type cannot be None."
+
+        if not self.default:
+            return True
 
         if not isinstance(self.default, self.valid_type):
             return False
@@ -213,6 +216,7 @@ class StringField(BaseField):
     """
 
     valid_type = str
+    regex = None
 
     def __init__(self, default: Any = None, description: str = "", min_length: int = None,
                  max_length: int = None, regex: str = "", *args, **kwargs):
@@ -220,6 +224,7 @@ class StringField(BaseField):
         init
         """
 
+        regex = self.regex or regex or ""
         self.regex = re.compile(regex) if regex else regex
         self.min_length = min_length
         self.max_length = max_length
@@ -431,3 +436,39 @@ class ChoiceField(BaseField):
         v = f"{self.prefix} {v}" if self.prefix else v
 
         return input(v)
+
+
+class MACField(StringField):
+    """
+    MACField
+    """
+
+    regex = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
+
+
+class IPv4Field(StringField):
+    """
+    IPv4Field
+    """
+
+    regex = r"^(\d{1,3}.){3}\d{1,3}$"
+
+
+class CIDRField(StringField):
+    """
+    CIDRField
+
+    Example::
+
+        192.168.1.1/24
+    """
+
+    regex = r"^(\d{1,3}.){3}\d{1,3}/\d{1,2}$"
+
+
+class HexField(StringField):
+    """
+    HexField
+    """
+
+    regex = r"^([0-9a-fA-F]{2})*$"
