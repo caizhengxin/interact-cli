@@ -4,16 +4,17 @@
    contain the root `toctree` directive.
 
 Welcome to interact-cli's documentation!
-================================================
+========================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: documentation:
+   :caption: documentation
 
    introduction
    installation
    usage
    modules
+   changelog
    api
 
 

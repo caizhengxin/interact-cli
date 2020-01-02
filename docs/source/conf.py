@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Author: JanKinCai
+# @Date:   2019-12-30 21:47:52
+# @Last Modified by:   JanKinCai
+# @Last Modified time: 2020-01-02 12:40:57
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -34,6 +39,9 @@ release = "0.4.0"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
     "sphinx.ext.coverage",
     "sphinx.ext.githubpages",
     "sphinx.ext.inheritance_diagram",
@@ -62,3 +70,7 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# TODO
+
+todo_include_todos = True
