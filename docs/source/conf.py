@@ -27,8 +27,8 @@ copyright = "2019, jankincai"
 author = 'jankincai'
 
 # The full version, including alpha/beta/rc tags
-version = "0.4.0"
-release = "0.4.0"
+version = "0.4.1"
+release = "0.4.1"
 
 
 # -- General configuration ---------------------------------------------------
