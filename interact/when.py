@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 22:45:03
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 20:44:44
+# @Last Modified time: 2020-01-03 16:57:00
 import re
 
 from typing import (
@@ -113,7 +113,7 @@ class When(object):
         elif other in self.mapping_boolean_true:
             v = True
         elif isinstance(cid, str):
-            v = cid.lstrip("'").rstrip("'").lstrip('"').rstrip('"')
+            v = other.lstrip("'").rstrip("'").lstrip('"').rstrip('"')
         else:
             v = type(cid)(other)
 
