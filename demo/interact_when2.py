@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-28 00:06:56
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2020-01-06 22:50:56
+# @Last Modified time: 2020-01-06 22:57:11
 from interact import loads
 
 
@@ -21,7 +21,7 @@ config = {
         "type": "boolean",
         "default": True,
         "description": "Test3",
-        "when": "test1 == true && test2 == true" # && or and
+        "when": "test1 == true && test2 == true"  # && or and
     },
     "test4": {
         "type": "boolean",
