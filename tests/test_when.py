@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-24 12:55:30
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-24 14:29:19
+# @Last Modified time: 2020-01-06 22:41:34
 from interact.when import When
 
 
@@ -12,7 +12,7 @@ test_items = {
     "c": 22,
     "d": {
         "dd": 23
-    }
+    },
 }
 
 
@@ -96,6 +96,13 @@ def test_int3():
     assert When(wv=vstr, cid=test_items).do_when() is False
 
 
+def test_linux():
+    """Test linux
+    """
+
+    assert When(wv="islinux", cid=test_items).do_when() is True
+
+
 if __name__ == "__main__":
     test_true()
     test_false()
@@ -105,3 +112,4 @@ if __name__ == "__main__":
     test_int()
     test_int2()
     test_int3()
+    test_linux()
