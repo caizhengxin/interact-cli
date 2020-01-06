@@ -8,6 +8,11 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+Added
+*****
+
+* Add rich when keywords.
+* Add ``islinux,iswin,ismac`` for when keywords.
 
 0.4.1 - 2019-01-03
 ------------------
