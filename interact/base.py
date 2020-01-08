@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-30 16:13:27
+# @Last Modified time: 2020-01-08 10:21:39
 from __future__ import print_function
 # import sys
 import json
@@ -76,6 +76,9 @@ class Interact(object):
         """
         Check iconfig
         """
+
+        if not isinstance(self.iconfig, dict):
+            raise ConfigError(f"Iconfig args not dict type.")
 
         for k, v in self.iconfig.items():
             if not isinstance(v, dict):
