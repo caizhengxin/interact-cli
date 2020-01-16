@@ -38,6 +38,7 @@ Features
 * Supports multiple data types
 * Support input check
 * Support regex, see network.json_
+* Support custom color.
 
 Support type
 ------------
@@ -180,6 +181,36 @@ when:
         """
 
         print(interacts(config).get_interact_data())
+
+color:
+
+.. code:: python
+
+    from interact import interacts
+    from interact import color
+
+
+    config = {
+        "port": {
+            "type": "int",
+            "default": 22,
+            "max_value": 30,
+            "min_value": 20,
+            "description": "Port"
+        },
+        "port2": {
+            "type": "int",
+            "default": 22,
+            "max_value": 30,
+            "min_value": 20,
+            "color": color.COLOR_CYAN_BLUE,
+            "description": "Port2"
+        }
+    }
+
+
+    if __name__ == "__main__":
+        print(interacts(config, color=color.COLOR_RED).port)
 
 See demo_
 

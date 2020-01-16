@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 22:41:53
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-27 22:03:13
+# @Last Modified time: 2020-01-16 10:26:46
 from __future__ import print_function
 import sys
 import json
@@ -19,7 +19,7 @@ __version__ = "0.5.0"
 __author__ = "jankincai"
 
 
-def interacts(iconfig: dict) -> Any:
+def interacts(iconfig: dict, *args, **kwargs) -> Any:
     """
     Interacts
 
@@ -29,7 +29,7 @@ def interacts(iconfig: dict) -> Any:
     """
 
     try:
-        return Interact(iconfig=iconfig)
+        return Interact(iconfig=iconfig, *args, **kwargs)
     except Exception as e:
         # traceback.print_exc()
         print(f"[-]:", e)
@@ -37,7 +37,7 @@ def interacts(iconfig: dict) -> Any:
     sys.exit(1)
 
 
-def interact(file: str) -> Any:
+def interact(file: str, *args, **kwargs) -> Any:
     """
     interact
 
@@ -47,10 +47,10 @@ def interact(file: str) -> Any:
     """
 
     with open(file) as f:
-        return interacts(json.loads(f.read()))
+        return interacts(json.loads(f.read()), *args, **kwargs)
 
 
-def loads(iconfig: dict) -> dict:
+def loads(iconfig: dict, *args, **kwargs) -> dict:
     """
     loads
 
@@ -59,10 +59,10 @@ def loads(iconfig: dict) -> dict:
     :return: dict
     """
 
-    return interacts(iconfig=iconfig).get_interact_data()
+    return interacts(iconfig=iconfig, *args, **kwargs).get_interact_data()
 
 
-def load(file: str) -> dict:
+def load(file: str, *args, **kwargs) -> dict:
     """
     load
 
@@ -72,4 +72,4 @@ def load(file: str) -> dict:
     """
 
     with open(file) as f:
-        return loads(json.loads(f.read()))
+        return loads(json.loads(f.read()), *args, **kwargs)

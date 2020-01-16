@@ -8,6 +8,10 @@ Check `Keep a Changelog`_ for recommendations on how to structure this file.
 
 Unreleased_
 -----------
+Added
+*****
+
+* Add input font color.
 
 0.5.0_ - 2020-01-06
 -------------------

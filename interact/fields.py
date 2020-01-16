@@ -2,12 +2,14 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2019-12-30 16:12:52
+# @Last Modified time: 2020-01-16 10:21:43
 # import sys
 import re
 from typing import (
     Any,
 )
+
+from interact.color import inputc
 
 
 class BaseField(object):
@@ -21,13 +23,15 @@ class BaseField(object):
     message = "Invalided `{value}`"
     valid_type: Any = None
 
-    def __init__(self, default: Any = None, description: str = "", prefix=">", *args, **kwargs):
+    def __init__(self, default: Any = None, description: str = "", prefix: str = ">",
+                 color: int = None, *args, **kwargs):
         """
         init
         """
 
         self.default = default
         self.prefix = prefix
+        self.color = color
         self.descripiton = description
 
     def is_default_valid(self) -> bool:
@@ -129,6 +133,13 @@ class BaseField(object):
 
         pass
 
+    def input(self, value: str) -> None:
+        """
+        Input
+        """
+
+        inputc(value, color=self.color)
+
     def pre_input(self) -> str:
         """
         Pre input
@@ -157,7 +168,7 @@ class BaseField(object):
         v = f"{self.pre_input()}{self.descripiton} {self.do_default()}{self.post_input()}: "
         v = f"{self.prefix} {v}" if self.prefix else v
 
-        return input(v)
+        return self.input(v)
 
 
 class BooleanField(BaseField):
@@ -435,7 +446,7 @@ class ChoiceField(BaseField):
         v = f"{self.pre_input()} {self.do_default()}{self.post_input()}: "
         v = f"{self.prefix} {v}" if self.prefix else v
 
-        return input(v)
+        return self.input(v)
 
 
 class MACField(StringField):

@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-12 12:52:19
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2020-01-08 10:21:39
+# @Last Modified time: 2020-01-15 18:19:32
 from __future__ import print_function
 # import sys
 import json
@@ -30,10 +30,12 @@ from interact.fields import (
 
 
 class Interact(object):
-    """
-    Interactive command line
+    """Interactive command line
 
-    :param iconfig(dict): Interact cli config.
+    Args:
+        param iconfig (dict): Interact cli config.
+        param prefix (str): Input string prefix.
+        param color (int): Color value.
     """
 
     mapping_type_items: dict = {
@@ -52,13 +54,14 @@ class Interact(object):
         "hex": HexField,
     }
 
-    def __init__(self, iconfig: dict, prefix=">", *args, **kwargs):
+    def __init__(self, iconfig: dict, prefix: str = ">", color: int = None, *args, **kwargs):
         """
         init
         """
 
         self.iconfig = iconfig
         self.prefix = prefix
+        self.color = color
         self.cmd_input_items = self.parser()
 
     def get_mapping_type(self, name: str) -> Optional[Callable[[Any, str, Optional[list]], Any]]:
@@ -104,6 +107,7 @@ class Interact(object):
         for k, v in iconfig.items():
 
             v["description"] = v.get("description") or k
+            v["color"] = v.get("color") or self.color
 
             whenstr = v.get("when")
 
