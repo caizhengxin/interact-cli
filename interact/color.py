@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2020-01-15 11:09:52
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2020-01-15 14:04:19
+# @Last Modified time: 2020-01-17 14:36:06
 
 SHOW_DEFAULT = 0
 SHOW_LIGHTLIGHT = 1
@@ -53,17 +53,17 @@ def Color(vstr: str, color: int = None, background_color: int = None, show_type:
     return f"\033[{cvs}m{vstr}\033[0m"
 
 
-def printc(values: str, color: int = None, background_color: int = None, show_type: int = None, *args, **kwargs):
-    """
-    print
+def printc(values: str, color: int = None, background_color: int = None,
+           show_type: int = None, *args, **kwargs):
+    """print
     """
 
     print(Color(values, color, background_color, show_type), *args, **kwargs)
 
 
-def inputc(values: str, color: int = None, background_color: int = None, show_type: int = None, *args, **kwargs):
-    """
-    input
+def inputc(values: str, color: int = None, background_color: int = None,
+           show_type: int = None, *args, **kwargs) -> str:
+    """input
     """
 
-    input(Color(values, color, background_color, show_type), *args, **kwargs)
+    return input(Color(values, color, background_color, show_type), *args, **kwargs)
