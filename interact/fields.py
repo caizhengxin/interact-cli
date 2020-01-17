@@ -2,7 +2,7 @@
 # @Author: JanKinCai
 # @Date:   2019-12-23 12:37:34
 # @Last Modified by:   JanKinCai
-# @Last Modified time: 2020-01-16 10:21:43
+# @Last Modified time: 2020-01-17 14:40:51
 # import sys
 import re
 from typing import (
@@ -138,7 +138,7 @@ class BaseField(object):
         Input
         """
 
-        inputc(value, color=self.color)
+        return inputc(value, color=self.color)
 
     def pre_input(self) -> str:
         """
